@@ -16,7 +16,7 @@
 //
 // TODO auto-generated type
 //
-simple Source
+simple Source2
 {
     parameters:
         volatile double iATime @unit(s);   // delay before sending back message
@@ -26,7 +26,7 @@ simple Source
         output out;
 }
 
-simple Destination
+simple Destination2
 {
     parameters:
         @display("i=block/routing");
@@ -38,11 +38,11 @@ network Exercise2
 {
     @display("bgb=289,141");
     submodules:
-        send: Source {
+        send: Source2 {
             parameters:
                 @display("i=block/source,cyan;p=31,42");
         }
-        receive: Destination {
+        receive: Destination2 {
             parameters:
                 @display("i=block/sink,gold;p=214,42");
         }

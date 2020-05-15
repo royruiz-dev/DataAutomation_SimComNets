@@ -37,7 +37,7 @@ public:
     randNum = LCG.generateRandNum(16807, (pow(2, 31) - 1));
     randNum = randNum / (pow(2, 31) - 1); // divide by modulus to get a value from 0,1
     EV << "Random Number: " << randNum << endl;
-    return SimTime(((b - a) / 2) * randNum); // divide base: b - a by 2 since we're using U(0,2)
+    return (((b - a) / 2) * randNum); // divide base: b - a by 2 since we're using U(0,2)
     }
 private:
     // Instance created of class type to call constructor in LinearCongruentialGenerator class
@@ -58,7 +58,7 @@ public:
     // This take a parameter mu (mean) which is passed where it's called in the program
     simtime_t ExponentialDistribution (double mu){
         // inverse transform algorithm
-        return SimTime((-1 / mu) * log(1 - uni.UniformDistribution(0, 2).dbl()));
+        return ((-1 / mu) * log(1 - uni.UniformDistribution(0, 2).dbl()));
         }
 private:
     Uniform uni; // Instance created of class type to call method from Uniform class

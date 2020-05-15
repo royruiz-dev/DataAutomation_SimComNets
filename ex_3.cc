@@ -8,8 +8,6 @@
 using namespace omnetpp;
 using namespace std;
 
-// Global variables
-
 /* Since random number generation occurs from calling the distribution function from the NED file via omnetpp.ini,
  * the objective is to generate a pseudo random number generator (PRNG) with the Linear Congruential Generator (LCG)
  * method. This random number would be used when generating a value for the Uniform Distribution function. Finally,
@@ -17,29 +15,34 @@ using namespace std;
  * using the Uniform Distribution function.
  */
 
-// Function to calculate the LCG pseudo random number based on the method called out in Exercise 3 task
-class LCG{
+// Linear Congruential Generator CLASS to calculate the pseudo random number based on formula from Exercise 3 task
+class LinearCongruentialGenerator{
 public:
-    LCG (uint64_t seed) : lastSeed(seed){ }
-    long generateRandLCG(int multiplier, long int modulus) {
+    // constructor to pass initial seed value by reference to lastSeed variable
+    LinearCongruentialGenerator (uint64_t seed) : lastSeed(seed){ }
+    long generateRandNum(int multiplier, long int modulus) {
         lastSeed = (multiplier * lastSeed) % modulus;
         EV << "New Seed is: " << lastSeed << endl;
         return lastSeed;
     }
 private:
-    uint64_t lastSeed;   // unint64_t helps to avoid overflow.
+    uint64_t lastSeed;   // unint64_t helps avoid overflow and OS independence
 };
 
+// Uniform CLASS to map the random number generated into a uniform distribution function (values from 0 ~ 1)
 class Uniform {
 public:
-    simtime_t uniformDistribution (int a, int b){
-    randNum = obj.generateRandLCG(16807, (pow(2, 31) - 1));
-    randNum = randNum / (pow(2, 31) - 1); //Dividing by the modulus would give a value from 0,1
+    // function to evaluate uniform distribution mapping of random number
+    simtime_t UniformDistribution (int a, int b){
+    randNum = LCG.generateRandNum(16807, (pow(2, 31) - 1));
+    randNum = randNum / (pow(2, 31) - 1); // divide by modulus to get a value from 0,1
     EV << "Random Number: " << randNum << endl;
-    return SimTime(((b - a) / 2) * randNum);
+    return SimTime(((b - a) / 2) * randNum); // divide base: b - a by 2 since we're using U(0,2)
     }
 private:
-   LCG obj = LCG(1);  // initialize seed_0
+    // Instance created of class type to call constructor in LinearCongruentialGenerator class
+    // Initializes by passing value to seed parameter --> seed_0
+    LinearCongruentialGenerator LCG = LinearCongruentialGenerator(1);
    double randNum;
 };
 
@@ -51,11 +54,14 @@ private:
 // -ln(1 - U) = F^-1(U) --> log() in math.h library is the natural log
 class Exponential {
 public:
-    simtime_t exponentialDistribution (double mu){
-    return SimTime((-1 / mu) * log(1 - dist.uniformDistribution(0, 2).dbl()));
-    }
+    // function to evaluate an exponentially-distributed value from a uniform distribution
+    // This take a parameter mu (mean) which is passed where it's called in the program
+    simtime_t ExponentialDistribution (double mu){
+        // inverse transform algorithm
+        return SimTime((-1 / mu) * log(1 - uni.UniformDistribution(0, 2).dbl()));
+        }
 private:
-    Uniform dist;
+    Uniform uni; // Instance created of class type to call method from Uniform class
 };
 
 
@@ -63,10 +69,10 @@ class Source3 : public cSimpleModule {
     private:
         cMessage *event;
         simtime_t interArrivalTime;
-        Exponential exp;
+        Exponential exp; // Instance created of class type to call method from Exponential class
 
         int sendCounter;
-        bool randLCG_flag;
+        bool randLCG_flag; // flag used to determine whether to run LCG or Mersenne Twister RNG
 
     protected:
         virtual void initialize() override;
@@ -85,7 +91,7 @@ void Source3::initialize() {
 
     WATCH(sendCounter);
 
-    if (randLCG_flag == true){ interArrivalTime = exp.exponentialDistribution(1.0); }
+    if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(1.0); }
     else{ interArrivalTime = par("iATime"); }
 
     scheduleAt(simTime() + interArrivalTime, event);
@@ -98,7 +104,7 @@ void Source3::handleMessage(cMessage *msg) {
     }
 
     else {
-        if (randLCG_flag == true){ interArrivalTime = exp.exponentialDistribution(1.0); }
+        if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(1.0); }
         else { interArrivalTime = par("iATime"); }
 
         sendCounter--;

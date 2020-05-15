@@ -1,21 +1,16 @@
-/*
- * ex_3.cc
- *
- *  Created on: May 13, 2020
- *      Author: royruiz
- */
 
 #include <stdio.h>
 #include <string.h>
 #include <omnetpp.h>
 #include <math.h>
+#include <stdint.h>
 
 using namespace omnetpp;
 using namespace std;
 
 // Global variables
-int seed = 1;  //seed 0
-int newSeed;
+uint64_t seed = 1;  //seed 0
+uint64_t newSeed;   // unint64_t helps to avoid overflow.
 double randNum;
 
 
@@ -39,7 +34,7 @@ simtime_t uniformDistribution (int a, int b){
     randNum = randNum / (pow(2, 31) - 1); //Dividing by the modulus would give a value from 0,1
     EV << "Random Number: " << randNum << endl;
     EV << "New Seed is still: " << seed << endl;
-    return SimTime(((b - a) / 2) * randNum);
+    return SimTime(((b - a)) * randNum);
 }
 
 // Suppose we have a random variable X ~ U(0,2) and a CDF:  F(X) = 1 - e^(-X)
@@ -49,7 +44,7 @@ simtime_t uniformDistribution (int a, int b){
 // 1 - U = e^(-F^-1(U))
 // -ln(1 - U) = F^-1(U) --> log() in math.h library is the natural log
 simtime_t exponentialDistribution (){
-    return SimTime(-1 * log(1 - uniformDistribution(0, 2).dbl()));
+    return SimTime(-1 * log(1 - uniformDistribution(0, 1).dbl()));
 }
 
 class Source3 : public cSimpleModule {

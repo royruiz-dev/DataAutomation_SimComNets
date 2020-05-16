@@ -58,7 +58,7 @@ public:
     // This take a parameter mu (mean) which is passed where it's called in the program
     simtime_t ExponentialDistribution (double mu){
         // inverse transform algorithm
-        return ((-1 / mu) * log(1 - uni.UniformDistribution(0, 2).dbl()));
+        return ((-mu) * log(1 - uni.UniformDistribution(0, 2).dbl()));
         }
 private:
     Uniform uni; // Instance created of class type to call method from Uniform class
@@ -91,7 +91,7 @@ void Source3::initialize() {
 
     WATCH(sendCounter);
 
-    if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(1.0); }
+    if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(3.0); }
     else{ interArrivalTime = par("iATime"); }
 
     scheduleAt(simTime() + interArrivalTime, event);
@@ -104,7 +104,7 @@ void Source3::handleMessage(cMessage *msg) {
     }
 
     else {
-        if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(1.0); }
+        if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(3.0); }
         else { interArrivalTime = par("iATime"); }
 
         sendCounter--;

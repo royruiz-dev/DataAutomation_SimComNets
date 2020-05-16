@@ -4,20 +4,20 @@ import math
 import matplotlib.pyplot as plt
 
 """
-Assuming x and y are independent from a Normal distribution (0,1),
-we apply Box-Müller transformation to rewrite our target distribution
-with a different set of variables (r,ø) instead of (x,y).
+  Assuming x and y are independent from a Normal distribution (0,1),
+  we apply Box-Müller transformation to rewrite our target distribution
+  with a different set of variables (r,ø) instead of (x,y).
 
-This way we can sample under a Box-Müller transformed distribution and
-then convert back to our target distribution.
+  This way we can sample under a Box-Müller transformed distribution and
+  then convert back to our target distribution.
 
-Since we assume independence of x and y, we can also assume independence
-of r and ø.
+  Since we assume independence of x and y, we can also assume independence
+  of r and ø.
 
-The outcome is that the function of the angle (ø) follows a uniform
-distribution, and the function of the radius (r) follows an exponential
-distribution, which can be expressed as the inverse transform of its
-Cumulative Distribution Function.
+  The outcome is that the function of the angle (ø) follows a uniform
+  distribution, and the function of the radius (r) follows an exponential
+  distribution, which can be expressed as the inverse transform of its
+  Cumulative Distribution Function.
 """
 
 # N mobile stations

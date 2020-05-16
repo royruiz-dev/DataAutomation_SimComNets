@@ -30,10 +30,10 @@ private:
 };
 
 // Uniform CLASS to map the random number generated into a uniform distribution function (values from 0 ~ 1)
-class Uniform {
+class UniformDistribution {
 public:
     // function to evaluate uniform distribution mapping of random number
-    simtime_t UniformDistribution (int a, int b){
+    simtime_t UniformlyDistRandNum (int a, int b){
     randNum = LCG.generateRandNum(16807, (pow(2, 31) - 1));
     randNum = randNum / (pow(2, 31) - 1); // divide by modulus to get a value from 0,1
     EV << "Random Number: " << randNum << endl;
@@ -52,16 +52,16 @@ private:
 // 1 - e^(-F^-1(U)) = U
 // 1 - U = e^(-F^-1(U))
 // -ln(1 - U) = F^-1(U) --> log() in math.h library is the natural log
-class Exponential {
+class ExponentialDistribution {
 public:
     // function to evaluate an exponentially-distributed value from a uniform distribution
     // This take a parameter mu (mean) which is passed where it's called in the program
-    simtime_t ExponentialDistribution (double mu){
+    simtime_t ExponentiallyDistRandNum (double mu){
         // inverse transform algorithm
-        return ((-mu) * log(1 - uni.UniformDistribution(0, 2).dbl()));
+        return ((-mu) * log(1 - uni.UniformlyDistRandNum(0, 2).dbl()));
         }
 private:
-    Uniform uni; // Instance created of class type to call method from Uniform class
+    UniformDistribution uni; // Instance created of class type to call method from Uniform class
 };
 
 
@@ -69,7 +69,7 @@ class Source3 : public cSimpleModule {
     private:
         cMessage *event;
         simtime_t interArrivalTime;
-        Exponential exp; // Instance created of class type to call method from Exponential class
+        ExponentialDistribution exp; // Instance created of class type to call method from Exponential class
 
         int sendCounter;
         bool randLCG_flag; // flag used to determine whether to run LCG or Mersenne Twister RNG
@@ -91,7 +91,7 @@ void Source3::initialize() {
 
     WATCH(sendCounter);
 
-    if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(3.0); }
+    if (randLCG_flag == true){ interArrivalTime = exp.ExponentiallyDistRandNum(3.0); }
     else{ interArrivalTime = par("iATime"); }
 
     scheduleAt(simTime() + interArrivalTime, event);
@@ -104,7 +104,7 @@ void Source3::handleMessage(cMessage *msg) {
     }
 
     else {
-        if (randLCG_flag == true){ interArrivalTime = exp.ExponentialDistribution(3.0); }
+        if (randLCG_flag == true){ interArrivalTime = exp.ExponentiallyDistRandNum(3.0); }
         else { interArrivalTime = par("iATime"); }
 
         sendCounter--;

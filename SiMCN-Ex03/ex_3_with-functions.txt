@@ -8,6 +8,12 @@
 using namespace omnetpp;
 using namespace std;
 
+// Global variables
+uint64_t seed = 1;  //seed 0
+uint64_t newSeed;   // unint64_t helps to avoid overflow.
+double randNum;
+
+
 /* Since random number generation occurs from calling the distribution function from the NED file via omnetpp.ini,
  * the objective is to generate a pseudo random number generator (PRNG) with the Linear Congruential Generator (LCG)
  * method. This random number would be used when generating a value for the Uniform Distribution function. Finally,
@@ -15,36 +21,21 @@ using namespace std;
  * using the Uniform Distribution function.
  */
 
-// Linear Congruential Generator CLASS to calculate the pseudo random number based on formula from Exercise 3 task
-class LinearCongruentialGenerator{
-public:
-    // constructor to pass initial seed value by reference to lastSeed variable
-    LinearCongruentialGenerator (uint64_t seed) : lastSeed(seed){ }
-    long generateRandNum(int multiplier, long int modulus) {
-        lastSeed = (multiplier * lastSeed) % modulus;
-        EV << "New Seed is: " << lastSeed << endl;
-        return lastSeed;
-    }
-private:
-    uint64_t lastSeed;   // unint64_t helps avoid overflow and OS independence
-};
+// Function to calculate the LCG pseudo random number based on the method called out in Exercise 3 task
+long generateRandLCG(int multiplier, long int modulus) {
+    newSeed = (multiplier * seed) % modulus;
+    EV << "New Seed is: " << newSeed << endl;
+    seed = newSeed;
+    return newSeed;
+}
 
-// Uniform CLASS to map the random number generated into a uniform distribution function (values from 0 ~ 1)
-class UniformDistribution {
-public:
-    // function to evaluate uniform distribution mapping of random number
-    simtime_t UniformlyDistRandNum (int a, int b){
-    randNum = LCG.generateRandNum(16807, (pow(2, 31) - 1));
-    randNum = randNum / (pow(2, 31) - 1); // divide by modulus to get a value from 0,1
+simtime_t uniformDistribution (int a, int b){
+    randNum = generateRandLCG(16807, (pow(2, 31) - 1));
+    randNum = randNum / (pow(2, 31) - 1); //Dividing by the modulus would give a value from 0,1
     EV << "Random Number: " << randNum << endl;
-    return (((b - a) / 2) * randNum); // divide base: b - a by 2 since we're using U(0,2)
-    }
-private:
-    // Instance created of class type to call constructor in LinearCongruentialGenerator class
-    // Initializes by passing value to seed parameter --> seed_0
-    LinearCongruentialGenerator LCG = LinearCongruentialGenerator(1);
-   double randNum;
-};
+    EV << "New Seed is still: " << seed << endl;
+    return SimTime(((b - a) / 2) * randNum);
+}
 
 // Suppose we have a random variable X ~ U(0,2) and a CDF:  F(X) = 1 - e^(-X)
 // Let X = F^-1(U)
@@ -52,27 +43,17 @@ private:
 // 1 - e^(-F^-1(U)) = U
 // 1 - U = e^(-F^-1(U))
 // -ln(1 - U) = F^-1(U) --> log() in math.h library is the natural log
-class ExponentialDistribution {
-public:
-    // function to evaluate an exponentially-distributed value from a uniform distribution
-    // This take a parameter mu (mean) which is passed where it's called in the program
-    simtime_t ExponentiallyDistRandNum (double mu){
-        // inverse transform algorithm
-        return ((-mu) * log(1 - uni.UniformlyDistRandNum(0, 2).dbl()));
-        }
-private:
-    UniformDistribution uni; // Instance created of class type to call method from Uniform class
-};
-
+simtime_t exponentialDistribution (){
+    return SimTime(-1 * log(1 - uniformDistribution(0, 2).dbl()));
+}
 
 class Source3 : public cSimpleModule {
     private:
         cMessage *event;
         simtime_t interArrivalTime;
-        ExponentialDistribution exp; // Instance created of class type to call method from Exponential class
 
         int sendCounter;
-        bool randLCG_flag; // flag used to determine whether to run LCG or Mersenne Twister RNG
+        bool randLCG_flag;
 
     protected:
         virtual void initialize() override;
@@ -91,20 +72,19 @@ void Source3::initialize() {
 
     WATCH(sendCounter);
 
-    if (randLCG_flag == true){ interArrivalTime = exp.ExponentiallyDistRandNum(3.0); }
+    if (randLCG_flag == true){ interArrivalTime = exponentialDistribution(); }
     else{ interArrivalTime = par("iATime"); }
 
     scheduleAt(simTime() + interArrivalTime, event);
 }
 
 void Source3::handleMessage(cMessage *msg) {
-
     if (sendCounter == 0) {
         done();
     }
 
     else {
-        if (randLCG_flag == true){ interArrivalTime = exp.ExponentiallyDistRandNum(3.0); }
+        if (randLCG_flag == true){ interArrivalTime = exponentialDistribution(); }
         else { interArrivalTime = par("iATime"); }
 
         sendCounter--;

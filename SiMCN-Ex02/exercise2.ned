@@ -16,18 +16,17 @@
 //
 // TODO auto-generated type
 //
-simple Source3
+simple Source
 {
     parameters:
         volatile double iATime @unit(s);   // delay before sending back message
-        int limit = default(2);   // used to limit number of messages by setting the limit in ini file
-        bool enablePRNG;
+        int limit = default(2);               // used to limit number of messages by setting the limit in ini file
         @display("i=block/routing");
     gates:
         output out;
 }
 
-simple Destination3
+simple Destination
 {
     parameters:
         @display("i=block/routing");
@@ -35,19 +34,18 @@ simple Destination3
         input in;
 }
 
-network Exercise3
+network Exercise2
 {
     @display("bgb=289,141");
     submodules:
-        send: Source3 {
+        send: Source {
             parameters:
                 @display("i=block/source,cyan;p=31,42");
         }
-        receive: Destination3 {
+        receive: Destination {
             parameters:
                 @display("i=block/sink,gold;p=214,42");
         }
     connections:
         send.out --> receive.in;
 }
-

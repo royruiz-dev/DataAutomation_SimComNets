@@ -12,7 +12,7 @@
 using namespace omnetpp;
 
 
-class Source2 : public cSimpleModule {
+class Source : public cSimpleModule {
     private:
         cMessage *event;
         int sendCounter;
@@ -23,9 +23,9 @@ class Source2 : public cSimpleModule {
         virtual void done();
 };
 
-Define_Module(Source2);
+Define_Module(Source);
 
-void Source2::initialize() {
+void Source::initialize() {
     event = new cMessage("event");
     sendCounter = par("limit");
 
@@ -36,7 +36,7 @@ void Source2::initialize() {
     scheduleAt(simTime() + interArrivalTime, event);
 }
 
-void Source2::handleMessage(cMessage *msg) {
+void Source::handleMessage(cMessage *msg) {
     if (sendCounter == 0) {
         done();
     }
@@ -50,12 +50,12 @@ void Source2::handleMessage(cMessage *msg) {
     }
 }
 
-void Source2::done(){
+void Source::done(){
     EV << "No more messages to send. Limit has been reached." << endl;
     cancelAndDelete(event);
 }
 
-class Destination2 : public cSimpleModule {
+class Destination : public cSimpleModule {
     private:
         double iAT;
         double iAT_sum;
@@ -70,15 +70,15 @@ class Destination2 : public cSimpleModule {
         virtual void finish() override;
 };
 
-Define_Module(Destination2);
+Define_Module(Destination);
 
-void Destination2::initialize() {
+void Destination::initialize() {
     iAT = 0.0;
     iAT_sum = 0.0;
     newTime = 0.0;
 }
 
-void Destination2::handleMessage(cMessage *msg) {
+void Destination::handleMessage(cMessage *msg) {
     iAT = simTime().dbl() - newTime;
     iAT_sum = iAT_sum + iAT;
     newTime = simTime().dbl();
@@ -92,7 +92,7 @@ void Destination2::handleMessage(cMessage *msg) {
     delete msg;
 }
 
-void Destination2::finish() {
+void Destination::finish() {
 
     EV << "Inter arrival time, min: " << iAT_Stats.getMin() << endl;
     EV << "Inter arrival time, max: " << iAT_Stats.getMax() << endl;

@@ -26,12 +26,13 @@ network Exercise4
 {
     parameters:
         double per = default(0);
+        double n;
     types:
         channel C extends DatarateChannel
         {
             datarate = 1Mbps;
             delay = 200 ms;
-            ber = 0.000001;
+            ber = n;
             per = per;
         }
     submodules:

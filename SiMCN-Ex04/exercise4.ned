@@ -21,34 +21,33 @@ import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.StandardHost;
 import ned.DatarateChannel;
 
-
 network Exercise4
 {
     parameters:
-        double per = default(0);
-        double n;
+        double n = default(0); // used for BER
+        @display("bgb=450,171");
     types:
         channel C extends DatarateChannel
         {
-            datarate = 1Mbps;
-            delay = 200 ms;
-            ber = n;
-            per = per;
+            datarate = default(1 Mbps); // a transmission rate of 1 Mbps
+            delay = default(200 ms); // 200 ms delay
+            ber = n; // bit error rate - multiple values set in INI file
         }
     submodules:
         client: StandardHost {
             parameters:
-                @display("p=250,150;i=device/pc3");
+                @display("p=84,106;i=device/pc3");
         }
         server: StandardHost {
             parameters:
-                @display("p=400,150;i=device/pc2");
+                @display("p=344,106;i=device/pc2");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=100,100;is=s");
+                @display("p=392,31;is=s");
         }
     connections:
-        client.pppg++ <--> C <--> server.pppg++;
+        client.pppg++ <--> C { @display("t=PPP Link,t,#212221;ls=#212221,2"); } <--> server.pppg++;
+
 }
 

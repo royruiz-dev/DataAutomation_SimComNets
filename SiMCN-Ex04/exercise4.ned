@@ -47,7 +47,6 @@ network Exercise4
                 @display("p=392,31;is=s");
         }
     connections:
-        client.pppg++ <--> C { @display("t=PPP Link,t,#212221;ls=#212221,2"); } <--> server.pppg++;
-
-}
+        client.pppg++ <--> C { @display("t=PPP Link,t,#212221;ls=#212221,2"); } <--> server.pppg++; //Two one-directional channels to achieve bi-directional link
+		}
 

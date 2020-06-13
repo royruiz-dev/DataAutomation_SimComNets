@@ -1,0 +1,16 @@
+run,ber,timelimit,repetition,Module,throughput:last
+Five_Runs-2-20200613-20:47:49-53730,1e-7,10,2,Exercise6.client.pppg$o[0].channel,226549.20436232
+Five_Runs-8-20200613-20:47:48-53731,1e-7,100,3,Exercise6.client.pppg$o[0].channel,662318.335808
+Five_Runs-0-20200613-20:47:48-53730,1e-7,10,0,Exercise6.client.pppg$o[0].channel,176122.50988647
+Five_Runs-6-20200613-20:47:49-53732,1e-7,100,1,Exercise6.client.pppg$o[0].channel,729809.34743811
+Five_Runs-14-20200613-20:47:57-53733,1e-7,1000,4,Exercise6.client.pppg$o[0].channel,755447.63932163
+Five_Runs-12-20200613-20:47:48-53733,1e-7,1000,2,Exercise6.client.pppg$o[0].channel,801145.27550235
+Five_Runs-10-20200613-20:47:49-53731,1e-7,1000,0,Exercise6.client.pppg$o[0].channel,801618.78055916
+Five_Runs-3-20200613-20:47:49-53730,1e-7,10,3,Exercise6.client.pppg$o[0].channel,176122.50988647
+Five_Runs-1-20200613-20:47:48-53730,1e-7,10,1,Exercise6.client.pppg$o[0].channel,176122.50988647
+Five_Runs-5-20200613-20:47:48-53732,1e-7,100,0,Exercise6.client.pppg$o[0].channel,678511.50836051
+Five_Runs-9-20200613-20:47:49-53731,1e-7,100,4,Exercise6.client.pppg$o[0].channel,747099.45646564
+Five_Runs-7-20200613-20:47:49-53732,1e-7,100,2,Exercise6.client.pppg$o[0].channel,634942.66589737
+Five_Runs-13-20200613-20:47:53-53733,1e-7,1000,3,Exercise6.client.pppg$o[0].channel,759328.3817166
+Five_Runs-4-20200613-20:47:48-53732,1e-7,10,4,Exercise6.client.pppg$o[0].channel,176122.50988647
+Five_Runs-11-20200613-20:47:54-53731,1e-7,1000,1,Exercise6.client.pppg$o[0].channel,760979.8877072

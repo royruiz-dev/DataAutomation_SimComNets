@@ -1,23 +1,10 @@
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
-// 
-// You should have received a copy of the GNU Lesser General Public License
-// along with this program.  If not, see http://www.gnu.org/licenses/.
-//
-
 import inet.common.misc.NetAnimTrace;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
 import ned.DatarateChannel;
+import ned.IdealChannel;
+
 
 network Exercise7
 {
@@ -25,8 +12,13 @@ network Exercise7
         // used to alternate between ISDN and DSL as configs in the INI file
         volatile double dataRate @unit(Mbps);
         int numUsers; // number of users in the network
-        @display("bgb=450,171");
+        int numBBrouter; // number of backbone routers
+        int numArouters; //
+        @display("bgb=755.99994,315");
     types:
+        channel Server extends IdealChannel
+        {
+        }
         channel Gateway extends DatarateChannel
         {
             datarate = default(10 Mbps); // bit rate for gateway
@@ -46,35 +38,39 @@ network Exercise7
     submodules:
         backboneRouter[5]: Router {
             parameters:
-                @display("p=84,106;i=device/pc3");
+                @display("p=317.625,155.75;i=device/pc3");
         }
         accessRouter[25]: Router {
             parameters:
-                @display("p=84,106;i=device/pc3");
+                @display("p=475.99997,155.75;i=device/pc3");
         }
         user[625]: StandardHost {
             parameters:
-                @display("p=344,106;i=device/pc2");
+                @display("p=650.125,155.75;i=device/pc2");
         }
         gatewayRouter: Router {
             parameters:
-                @display("p=84,106;i=device/pc3");
+                @display("p=181.99998,155.75;i=device/pc3");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
                 @display("p=392,31;is=s");
         }
+
+        server: StandardHost {
+            @display("p=40.25,155.75");
+        }
         
     connections:
-        for i=0..4 {
-        	backboneRouter[i].pppg++ <--> Gateway <--> gatewayRouter.pppg++; // Two one-directional channels to achieve bi-directional link
+        server.pppg++ <--> gatewayRouter.pppg++;
+        for i=0..numBBrouter-1 {
+            backboneRouter[i].pppg++ <--> Gateway <--> gatewayRouter.pppg++; // Two one-directional channels to achieve bi-directional link
         }
-        for i=0..24, for j=0..624 {
-        	accessRouter[i].pppg++  <--> Access <--> user[j].pppg++;
+        for i=0..numArouters-1, for j=0..numUsers-1 {
+            accessRouter[i].pppg++ <--> Access <--> user[j].pppg++;
         }
-        for i=0..5, for j=0..24 {
-        	backboneRouter[i].pppg++ <--> Backbone <--> accessRouter[j].pppg++;
+        for i=0..numBBrouter-1, for j=0..numArouters-1 {
+            backboneRouter[i].pppg++ <--> Backbone <--> accessRouter[j].pppg++;
         }
-		
-		}
-		
+
+}

@@ -17,7 +17,9 @@ network Exercise7
         int numArouters = default(1); // number of access routers
         
     types:
-        channel GatewayServer extends IdealChannel {
+        channel GatewayServer extends DatarateChannel {
+            delay = default(0s);
+            datarate = default(100Mbps);
         }
         channel BackboneGateway extends DatarateChannel {
             datarate = default(10 Mbps); // bit rate for gateway

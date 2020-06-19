@@ -12,9 +12,9 @@ network Exercise7
         // used to alternate between ISDN and DSL as configs in the INI file
         volatile double dataRate @unit(Mbps);
         
-        int numUsers = default(1); // number of users
-        int numBBrouter = default(1); // number of backbone routers
-        int numArouters = default(1); // number of access routers
+        volatile int numUsers;// default(1); // number of users
+        volatile int numBBrouter;///default(1); // number of backbone routers
+        volatile int numArouters;//default(1); // number of access routers
         
     types:
         channel GatewayServer extends DatarateChannel {

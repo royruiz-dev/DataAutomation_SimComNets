@@ -1,10 +1,16 @@
-import inet.common.misc.NetAnimTrace;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
 import ned.DatarateChannel;
-import ned.IdealChannel;
 
+import inet.applications.udpapp.UdpBasicApp;
+
+simple VoIPApp extends UdpBasicApp {
+	parameters:
+	  double acceptableDelay @unit(s) = default(200ms);  
+	
+	@class(VoIPApp);
+}
 
 network Exercise7
 {
@@ -12,9 +18,9 @@ network Exercise7
         // used to alternate between ISDN and DSL as configs in the INI file
         volatile double dataRate @unit(Mbps);
         
-        volatile int numUsers;// default(1); // number of users
-        volatile int numBBrouter;///default(1); // number of backbone routers
-        volatile int numArouters;//default(1); // number of access routers
+        int numUsers = default(25); // number of users
+        int numBBrouter = default(1); // number of backbone routers
+        int numArouters = default(5); // number of access routers
         
     types:
         channel GatewayServer extends DatarateChannel {

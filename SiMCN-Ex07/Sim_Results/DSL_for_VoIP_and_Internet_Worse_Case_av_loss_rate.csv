@@ -1,0 +1,5 @@
+run,timelimit,repetition,Module,Name,
+DSL_for_VoIP_and_Internet_Worse_Case-0-20200622-23:05:29-4641,10000,0,Exercise7.user[0].app[0],Average Loss Rate,7.7239357%
+DSL_for_VoIP_and_Internet_Worse_Case-0-20200622-23:05:29-4641,10000,0,Exercise7.user[25].app[0],Average Loss Rate,7.9159363%
+DSL_for_VoIP_and_Internet_Worse_Case-0-20200622-23:05:29-4641,10000,0,Exercise7.user[50].app[0],Average Loss Rate,7.8460310%
+DSL_for_VoIP_and_Internet_Worse_Case-0-20200622-23:05:29-4641,10000,0,Exercise7.user[75].app[0],Average Loss Rate,7.8627698%

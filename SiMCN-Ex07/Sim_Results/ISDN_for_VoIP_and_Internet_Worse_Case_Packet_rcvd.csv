@@ -1,0 +1,5 @@
+run,timelimit,repetition,Module,Name,
+ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[0].app[0],Packets Received,500382
+ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[25].app[0],Packets Received,498912
+ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[50].app[0],Packets Received,500757
+ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[75].app[0],Packets Received,499862

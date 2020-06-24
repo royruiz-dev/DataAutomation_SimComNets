@@ -8,6 +8,7 @@ import inet.applications.udpapp.UdpBasicApp;
 simple VoIPApp extends UdpBasicApp
 {
     parameters:
+        //max acceptable 'end-to-end' delay in VoIP application
         double acceptableDelay @unit(s) = default(0.2s);
 
         @class(VoIPApp);
@@ -17,7 +18,7 @@ network Exercise7
 {
     parameters:
         // used to alternate between ISDN and DSL as configs in the INI file
-        volatile double dataRate @unit(Mbps);
+        double dataRate @unit(Mbps);
 
         int numUsersPerAccRouter = default(25); // number of users per access router (max = 25)
         int numBBrouterPerGateway = default(5); // number of backbone routers per gateway (max = 5)
@@ -77,6 +78,5 @@ network Exercise7
 
         for i=0..(numBBrouterPerGateway*numAroutersPerBBRouter)-1, for j=0..numUsersPerAccRouter-1 {
             accessRouter[i].pppg++ <--> AccessUser <--> user[i*numUsersPerAccRouter + j].pppg++; // access to user connection
-            user[i*numUsersPerAccRouter + j].pppg++ <--> AccessUser <--> accessRouter[i].pppg++;
         }
 }

@@ -10,9 +10,8 @@ public:
     double acceptableDelay;
     double packetLossRate;
 
-    int numLostPackets;
-    int numSentPackets;
-    int numReceivedPackets;
+    int totalLostPackets;
+    int numLatePackets;
 
 protected:
     virtual void initialize(int stage) override;
@@ -26,35 +25,42 @@ Define_Module(VoIPApp);
 void VoIPApp::initialize(int stage) {
     UdpBasicApp::initialize(stage);
     acceptableDelay = par("acceptableDelay");
-    packetLossRate = 0;
+    packetLossRate = 0.0;
 
-    numLostPackets = 0;
-    numSentPackets = 0;
-    numReceivedPackets = 0;
+    totalLostPackets = 0;
+    numLatePackets = 0;
 }
 
 void VoIPApp::sendPacket() {
     UdpBasicApp::sendPacket();
-    numSentPackets++;
 }
 
 void VoIPApp::processPacket(Packet *pk) {
-    simtime_t timePacketReceived = simTime();
-    simtime_t duration = timePacketReceived - pk->getCreationTime();
-    emit(packetReceivedSignal, pk);
-    if (duration.dbl() > acceptableDelay) {
-        numLostPackets++;
-        EV << "Lost Packet hahahahas: " << numLostPackets;
+    simtime_t actualDelay = simTime() - pk->getCreationTime();
+
+    EV << "Time between packet generation and time in application of receiver: " << actualDelay << endl;
+
+    if (actualDelay.dbl() > acceptableDelay) {
+        numLatePackets++;
+        EV << "Packet is late. Its 'end-to-end' delay is " << actualDelay << endl;
+        EV << "Total Number of packets that arrived past max acceptable delay is " << numLatePackets << endl;
+
+        delete pk;
     }
-    numReceivedPackets++;
-    delete pk;
+    else {
+        UdpBasicApp::processPacket(pk);
+    }
 }
 
 void VoIPApp::finish() {
-    double packetLossRate = ((double)numLostPackets) / ((double)numReceivedPackets);
-    recordScalar("Average Loss Rate", packetLossRate);
-    recordScalar("Packets Lost", numLostPackets);
-    recordScalar("Packets Sent", numSentPackets);
-    recordScalar("Packets Received", numReceivedPackets);
+    totalLostPackets = this->numSent - this->numReceived;
+    packetLossRate = static_cast<double>(totalLostPackets) / static_cast<double>(this->numSent);
+
+    recordScalar("[VoIP] Total SENT Packets", this->numSent);
+    recordScalar("[VoIP] Total RCVD Packets", this->numReceived);
+    recordScalar("[VoIP] Total LOST Packets", totalLostPackets);
+    recordScalar("[VoIP] Total LATE Packets", numLatePackets);
+    recordScalar("[VoIP] AVG PK LOSS Rate", packetLossRate);
+
     UdpBasicApp::finish();
 }

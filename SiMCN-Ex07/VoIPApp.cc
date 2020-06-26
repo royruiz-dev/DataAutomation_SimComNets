@@ -32,7 +32,7 @@ void VoIPApp::initialize(int stage) {
 }
 
 void VoIPApp::sendPacket() {
-    UdpBasicApp::sendPacket();
+        UdpBasicApp::sendPacket();
 }
 
 void VoIPApp::processPacket(Packet *pk) {

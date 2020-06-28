@@ -35,22 +35,23 @@ done
 echo "300 PAIRS - DIFF Access Router"
 echo ""
 
-arr2=(0 25 50 75 100)
+arr2=(0 125 250 375 500) # DIFF Access Router | SAME Backbone Router
+# arr2=(0 25 50 75 100) # DIFF Access Router | DIFF Backbone Router
 
 for k in "${arr2[@]}"; do
-#	a=$(($k+25)); # DIFF Access Router | SAME Backbone Router
-#	b=$(($k+50)); # DIFF Access Router | SAME Backbone Router
-#	c=$(($k+75)); # DIFF Access Router | SAME Backbone Router
-#	d=$(($k+100)); # DIFF Access Router | SAME Backbone Router
-	a=$(($k+125)); # DIFF Access Router | DIFF Backbone Router
-	b=$(($k+250)); # DIFF Access Router | DIFF Backbone Router
-	c=$(($k+375)); # DIFF Access Router | DIFF Backbone Router
-	d=$(($k+500)); # DIFF Access Router | DIFF Backbone Router
-	max_a=$(($a+4));
-	max_b=$(($b+4));
-	max_c=$(($c+4));
-	max_d=$(($d+4));
-	for x in $(seq $k $(($k+19))); do
+	a=$(($k+25)); # DIFF Access Router | SAME Backbone Router
+	b=$(($k+50)); # DIFF Access Router | SAME Backbone Router
+	c=$(($k+75)); # DIFF Access Router | SAME Backbone Router
+	d=$(($k+100)); # DIFF Access Router | SAME Backbone Router
+#	a=$(($k+125)); # DIFF Access Router | DIFF Backbone Router
+#	b=$(($k+250)); # DIFF Access Router | DIFF Backbone Router
+#	c=$(($k+375)); # DIFF Access Router | DIFF Backbone Router
+#	d=$(($k+500)); # DIFF Access Router | DIFF Backbone Router
+	max_a=$(($a+5));
+	max_b=$(($b+5));
+	max_c=$(($c+5));
+	max_d=$(($d+5));
+	for x in $(seq $k $(($k+23))); do
 		var1="**.user[$(($x))].app[1].destAddresses = "
 		if [ $a -le $max_a ]; then
 			var3="**.user[$(($a))].app[1].destAddresses = "
@@ -85,10 +86,10 @@ for k in "${arr2[@]}"; do
 		fi
 	done
 
-	max_b=$(($b+4));
-	max_c=$(($c+4));
-	max_d=$(($d+4));
-	for x in $(seq $a $(($a+14))); do
+	max_b=$(($b+5));
+	max_c=$(($c+5));
+	max_d=$(($d+5));
+	for x in $(seq $a $(($a+17))); do
 		var1="**.user[$(($x))].app[1].destAddresses = "
 			if [ $b -le $max_b ]; then
 				var3="**.user[$(($b))].app[1].destAddresses = "
@@ -116,9 +117,9 @@ for k in "${arr2[@]}"; do
 			fi
 	done
 
-	max_c=$(($c+4));
-	max_d=$(($d+4));
-	for x in $(seq $b $(($b+9))); do
+	max_c=$(($c+5));
+	max_d=$(($d+5));
+	for x in $(seq $b $(($b+11))); do
 		var1="**.user[$(($x))].app[1].destAddresses = "
 			if [ $c -le $max_c ]; then
 				var3="**.user[$(($c))].app[1].destAddresses = "
@@ -139,8 +140,8 @@ for k in "${arr2[@]}"; do
 			fi
 	done
 
-	max_d=$(($d+4));
-	for x in $(seq $c $(($c+4))); do
+	max_d=$(($d+5));
+	for x in $(seq $c $(($c+5))); do
 	var1="**.user[$(($x))].app[1].destAddresses = "
 		if [ $d -le $max_d ]; then
 			var3="**.user[$(($d))].app[1].destAddresses = "
@@ -159,8 +160,8 @@ done
 
 ##########################################################################################
 
-echo "150 PAIRS - DIFF Access Router"
-echo ""
+#echo "150 PAIRS - DIFF Access Router"
+#echo ""
 
 #arr3=(0 25 50 75 100)
 #for k in "${arr3[@]}"; do
@@ -171,125 +172,124 @@ echo ""
 
 arr3=(0 25 50 75 100) # start of each backbone router
 
-for k in "${arr3[@]}"; do
+#for k in "${arr3[@]}"; do
 #	a=$(($k+25)); # DIFF Access Router | SAME Backbone Router
 #	b=$(($k+50)); # DIFF Access Router | SAME Backbone Router
 #	c=$(($k+75)); # DIFF Access Router | SAME Backbone Router
 #	d=$(($k+100)); # DIFF Access Router | SAME Backbone Router
-	a=$(($k+125)); # DIFF Access Router | DIFF Backbone Router
-	b=$(($k+250)); # DIFF Access Router | DIFF Backbone Router
-	c=$(($k+375)); # DIFF Access Router | DIFF Backbone Router
-	d=$(($k+500)); # DIFF Access Router | DIFF Backbone Router
-	max_a=$(($a+2));
-	max_b=$(($b+2));
-	max_c=$(($c+2));
-	max_d=$(($d+2));
-	for x in $(seq $k $(($k+11))); do
-		var1="**.user[$(($x))].app[1].destAddresses = "
-		if [ $a -le $max_a ]; then
-			var3="**.user[$(($a))].app[1].destAddresses = "
-			var2="\"user[$a]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "a++"
-		elif [ $b -le $max_b ]; then
-			var3="**.user[$(($b))].app[1].destAddresses = "
-			var2="\"user[$b]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "b++"
-		elif [ $c -le $max_c ]; then
-			var3="**.user[$(($c))].app[1].destAddresses = "
-			var2="\"user[$c]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "c++"
-		elif [ $d -le $max_d ]; then
-			var3="**.user[$(($d))].app[1].destAddresses = "
-			var2="\"user[$d]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "d++"
-		else
-			echo ""
-		fi
-	done
-
-	max_b=$(($b+2));
-	max_c=$(($c+2));
-	max_d=$(($d+2));
-	for x in $(seq $a $(($a+8))); do
-		var1="**.user[$(($x))].app[1].destAddresses = "
-			if [ $b -le $max_b ]; then
-				var3="**.user[$(($b))].app[1].destAddresses = "
-				var2="\"user[$b]\""
-				var4="\"user[$x]\""
-				echo $var1$var2
-				echo $var3$var4
-				let "b++"
-			elif [ $c -le $max_c ]; then
-				var3="**.user[$(($c))].app[1].destAddresses = "
-				var2="\"user[$c]\""
-				var4="\"user[$x]\""
-				echo $var1$var2
-				echo $var3$var4
-				let "c++"
-			elif [ $d -le $max_d ]; then
-				var3="**.user[$(($d))].app[1].destAddresses = "
-				var2="\"user[$d]\""
-				var4="\"user[$x]\""
-				echo $var1$var2
-				echo $var3$var4
-				let "d++"
-			else
-				echo ""
-			fi
-	done
-
-	max_c=$(($c+2));
-	max_d=$(($d+2));
-	for x in $(seq $b $(($b+5))); do
-		var1="**.user[$(($x))].app[1].destAddresses = "
-			if [ $c -le $max_c ]; then
-				var3="**.user[$(($c))].app[1].destAddresses = "
-				var2="\"user[$c]\""
-				var4="\"user[$x]\""
-				echo $var1$var2
-				echo $var3$var4
-				let "c++"
-			elif [ $d -le $max_d ]; then
-				var3="**.user[$(($d))].app[1].destAddresses = "
-				var2="\"user[$d]\""
-				var4="\"user[$x]\""
-				echo $var1$var2
-				echo $var3$var4
-				let "d++"
-			else
-				echo ""
-			fi
-	done
-
-	max_d=$(($d+2));
-	for x in $(seq $c $(($c+2))); do
-	var1="**.user[$(($x))].app[1].destAddresses = "
-		if [ $d -le $max_d ]; then
-			var3="**.user[$(($d))].app[1].destAddresses = "
-			var2="\"user[$d]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "d++"
-		else
-			echo ""
-		fi
-	done
-echo ""
-echo ""
-done
+#	a=$(($k+125)); # DIFF Access Router | DIFF Backbone Router
+#	b=$(($k+250)); # DIFF Access Router | DIFF Backbone Router
+#	c=$(($k+375)); # DIFF Access Router | DIFF Backbone Router
+#	d=$(($k+500)); # DIFF Access Router | DIFF Backbone Router
+#	max_a=$(($a+2));
+#	max_b=$(($b+2));
+#	max_c=$(($c+2));
+#	max_d=$(($d+2));
+#	for x in $(seq $k $(($k+11))); do
+#		var1="**.user[$(($x))].app[1].destAddresses = "
+#		if [ $a -le $max_a ]; then
+#			var3="**.user[$(($a))].app[1].destAddresses = "
+#			var2="\"user[$a]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "a++"
+#		elif [ $b -le $max_b ]; then
+#			var3="**.user[$(($b))].app[1].destAddresses = "
+#			var2="\"user[$b]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "b++"
+#		elif [ $c -le $max_c ]; then
+#			var3="**.user[$(($c))].app[1].destAddresses = "
+#			var2="\"user[$c]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "c++"
+#		elif [ $d -le $max_d ]; then
+#			var3="**.user[$(($d))].app[1].destAddresses = "
+#			var2="\"user[$d]\""
+#			var4="\"user[$x]\""
+##			echo $var3$var4
+	#		let "d++"
+#		else
+#			echo ""
+#		fi
+#	done
+#
+#	max_b=$(($b+2));
+#	max_c=$(($c+2));
+#	max_d=$(($d+2));
+#	for x in $(seq $a $(($a+8))); do
+#		var1="**.user[$(($x))].app[1].destAddresses = "
+#			if [ $b -le $max_b ]; then
+#				var3="**.user[$(($b))].app[1].destAddresses = "
+#				var2="\"user[$b]\""
+#				var4="\"user[$x]\""
+#				echo $var1$var2
+#				echo $var3$var4
+#				let "b++"
+#			elif [ $c -le $max_c ]; then
+#				var3="**.user[$(($c))].app[1].destAddresses = "
+#				var2="\"user[$c]\""
+#				var4="\"user[$x]\""
+#				echo $var1$var2
+#				echo $var3$var4
+#				let "c++"
+#			elif [ $d -le $max_d ]; then
+#				var3="**.user[$(($d))].app[1].destAddresses = "
+#				var2="\"user[$d]\""
+#				var4="\"user[$x]\""
+#				echo $var1$var2
+#				echo $var3$var4
+#				let "d++"
+#			else
+#				echo ""
+#			fi
+#	done
+#
+#	max_c=$(($c+2));
+#	max_d=$(($d+2));
+#	for x in $(seq $b $(($b+5))); do
+#		var1="**.user[$(($x))].app[1].destAddresses = "
+#			if [ $c -le $max_c ]; then
+#				var3="**.user[$(($c))].app[1].destAddresses = "
+#				var2="\"user[$c]\""
+#				var4="\"user[$x]\""
+#				echo $var1$var2
+#				echo $var3$var4
+#				let "c++"
+#			elif [ $d -le $max_d ]; then
+#				var3="**.user[$(($d))].app[1].destAddresses = "
+#				var2="\"user[$d]\""
+#				var4="\"user[$x]\""
+#				echo $var1$var2
+#				echo $var3$var4
+#				let "d++"
+#			else
+#				echo ""
+#			fi
+#	done
+#
+#	max_d=$(($d+2));
+#	for x in $(seq $c $(($c+2))); do
+#	var1="**.user[$(($x))].app[1].destAddresses = "
+#		if [ $d -le $max_d ]; then
+#			var3="**.user[$(($d))].app[1].destAddresses = "
+#			var2="\"user[$d]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "d++"
+#		else
+#			echo ""
+#		fi
+#	done
+#echo ""
+#echo ""
+#done
 
 # User mapping between different access routers and different backbone routers
 #user[0] --> user[125] BB1_A1 --> BB2_A1
@@ -360,57 +360,57 @@ done
 
 ##########################################################################################
 
-echo "100 PAIRS"
-echo ""
+#echo "100 PAIRS"
+#echo ""
 
-arr4=(0 25 50 75 100)
-for k in "${arr4[@]}"; do
-	a=$(($k+25)); # DIFF Access Router | SAME Backbone Router
-	b=$(($k+50)); # DIFF Access Router | SAME Backbone Router
-	c=$(($k+75)); # DIFF Access Router | SAME Backbone Router
-	d=$(($k+100)); # DIFF Access Router | SAME Backbone Router
-#	a=$(($k+125)); # DIFF Access Router | DIFF Backbone Router
-#	b=$(($k+250)); # DIFF Access Router | DIFF Backbone Router
-#	c=$(($k+375)); # DIFF Access Router | DIFF Backbone Router
-#	d=$(($k+500)); # DIFF Access Router | DIFF Backbone Router
-	max_a=$(($a+4));
-	max_b=$(($b+4));
-	max_c=$(($c+4));
-	max_d=$(($d+4));
-	for x in $(seq $k $(($k+19))); do
-		var1="**.user[$(($x))].app[1].destAddresses = "
-		if [ $a -le $max_a ]; then
-			var3="**.user[$(($a))].app[1].destAddresses = "
-			var2="\"user[$a]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "a++"
-		elif [ $b -le $max_b ]; then
-			var3="**.user[$(($b))].app[1].destAddresses = "
-			var2="\"user[$b]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "b++"
-		elif [ $c -le $max_c ]; then
-			var3="**.user[$(($c))].app[1].destAddresses = "
-			var2="\"user[$c]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "c++"
-		elif [ $d -le $max_d ]; then
-			var3="**.user[$(($d))].app[1].destAddresses = "
-			var2="\"user[$d]\""
-			var4="\"user[$x]\""
-			echo $var1$var2
-			echo $var3$var4
-			let "d++"
-		else
-			echo ""
-		fi
-	done
-echo ""
-echo ""
-done
+#arr4=(0 25 50 75 100)
+#for k in "${arr4[@]}"; do
+#	a=$(($k+25)); # DIFF Access Router | SAME Backbone Router
+#	b=$(($k+50)); # DIFF Access Router | SAME Backbone Router
+#	c=$(($k+75)); # DIFF Access Router | SAME Backbone Router
+#	d=$(($k+100)); # DIFF Access Router | SAME Backbone Router
+##	a=$(($k+125)); # DIFF Access Router | DIFF Backbone Router
+##	b=$(($k+250)); # DIFF Access Router | DIFF Backbone Router
+##	c=$(($k+375)); # DIFF Access Router | DIFF Backbone Router
+##	d=$(($k+500)); # DIFF Access Router | DIFF Backbone Router
+#	max_a=$(($a+4));
+#	max_b=$(($b+4));
+#	max_c=$(($c+4));
+#	max_d=$(($d+4));
+#	for x in $(seq $k $(($k+19))); do
+#		var1="**.user[$(($x))].app[1].destAddresses = "
+#		if [ $a -le $max_a ]; then
+#			var3="**.user[$(($a))].app[1].destAddresses = "
+#			var2="\"user[$a]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "a++"
+#		elif [ $b -le $max_b ]; then
+#			var3="**.user[$(($b))].app[1].destAddresses = "
+#			var2="\"user[$b]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "b++"
+#		elif [ $c -le $max_c ]; then
+#			var3="**.user[$(($c))].app[1].destAddresses = "
+#			var2="\"user[$c]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "c++"
+#		elif [ $d -le $max_d ]; then
+#			var3="**.user[$(($d))].app[1].destAddresses = "
+#			var2="\"user[$d]\""
+#			var4="\"user[$x]\""
+#			echo $var1$var2
+#			echo $var3$var4
+#			let "d++"
+#		else
+#			echo ""
+#		fi
+#	done
+#echo ""
+#echo ""
+#done

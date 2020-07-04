@@ -1,7 +1,7 @@
 run,time,repetition,Module,queueLength:max
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[0].ppp[1].ppp.queue,3
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[0].ppp[2].ppp.queue,1
-NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[0].ppp[3].ppp.queue,4
+NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[0].ppp[3].ppp.queue,
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[0].ppp[4].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[0].ppp[5].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[0].ppp[6].ppp.queue,1
@@ -233,7 +233,7 @@ NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessR
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[7].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[8].ppp.queue,2
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[9].ppp.queue,1
-NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[10].ppp.queue,4
+NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[10].ppp.queue,
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[11].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[12].ppp.queue,2
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[9].ppp[13].ppp.queue,2
@@ -306,7 +306,7 @@ NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessR
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[5].ppp.queue,2
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[6].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[7].ppp.queue,3
-NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[8].ppp.queue,13
+NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[8].ppp.queue,
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[9].ppp.queue,2
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[10].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[12].ppp[11].ppp.queue,1
@@ -393,7 +393,7 @@ NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessR
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[17].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[18].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[19].ppp.queue,1
-NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[20].ppp.queue,18
+NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[20].ppp.queue,
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[21].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[22].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[15].ppp[23].ppp.queue,1
@@ -539,7 +539,7 @@ NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessR
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[13].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[14].ppp.queue,3
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[15].ppp.queue,1
-NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[16].ppp.queue,13
+NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[16].ppp.queue,
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[17].ppp.queue,1
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[18].ppp.queue,3
 NO_VOIP_DSL_rpt03_scenario_02-0-20200704-04:41:25-24420,1000,0,Exercise7.accessRouter[21].ppp[19].ppp.queue,1

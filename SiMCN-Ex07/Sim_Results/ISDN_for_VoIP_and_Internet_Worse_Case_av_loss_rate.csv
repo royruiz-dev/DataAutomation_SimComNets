@@ -1,5 +1,0 @@
-run,timelimit,repetition,Module,Name,
-ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[0].app[0],Average Loss Rate,0.26%
-ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[25].app[0],Average Loss Rate,0.25%
-ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[50].app[0],Average Loss Rate,0.27%
-ISDN_for_VoIP_and_Internet_Worse_Case-0-20200622-22:53:26-3808,10000,0,Exercise7.user[75].app[0],Average Loss Rate,0.25%

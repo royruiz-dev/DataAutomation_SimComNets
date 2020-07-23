@@ -1,12 +1,12 @@
 
-import inet.networklayer.configurator.ipv4.Ipv4FlatNetworkConfigurator;
+import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
 import inet.node.inet.WirelessHost;
 import inet.node.wireless.AccessPoint;
 import inet.physicallayer.common.packetlevel.RadioMedium;
 import ned.DatarateChannel;
-
+import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 //
 // TODO documentation
 //
@@ -51,11 +51,11 @@ network Exercise8
         Client[FTP_Clients]: WirelessHost {
             @display("p=65,238");
         }
-        radioMedium: RadioMedium {
-            @display("p=213,237");
+        configurator: Ipv4NetworkConfigurator {
+            @display("p=81,83");
         }
-        ipv4FlatNetworkConfigurator: Ipv4FlatNetworkConfigurator {
-            @display("p=64,79");
+        radioMedium: RadioMedium {
+            @display("p=192,235");
         }
     connections allowunconnected:
         Server.pppg++ <--> ISPServer <--> ISPRouter.pppg++;

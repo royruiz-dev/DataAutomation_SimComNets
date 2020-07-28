@@ -39,16 +39,14 @@ network FinalTask
 {
     parameters:
         int HTTP_Clients; // number of Clients web browsing
-        @display("bgb=1858.1888,694.65");
+        @display("bgb=2059.8374,686.6125");
 
     types:
         channel FTPServer_LRouter extends Eth100M // bi-directional
         {
-            datarate = default(100Mbps);
         }
         channel VideoLecture_LRouter extends Eth100M // bi-directional
         {
-            datarate = default(100Mbps);
         }
         channel LRouter_LISPRouter extends DatarateChannel // uni-directional
         {
@@ -60,13 +58,13 @@ network FinalTask
         }
         channel LISPRouter_DISPRouter extends Eth100M // bi-directional
         {
-            datarate = default(100Mbps);
-            delay = default(60ms);
+            //datarate = default(100Mbps);
+            length = 12000000m; // delay value = replaceUnit(length/2e8,"s") = 0.06s
         }
         channel HTTPServer_DISPRouter extends Eth100M // bi-directional
         {
-            datarate = default(100Mbps);
-            delay = default(60ms);
+            //datarate = default(100Mbps);
+            length = 12000000m; // delay value = replaceUnit(length/2e8,"s") = 0.06s
         }
         channel DISPRouter_DRouter extends DatarateChannel // uni-directional
         {
@@ -78,48 +76,47 @@ network FinalTask
         }
         channel AP_DRouter extends Eth100M // bi-directional
         {
-            datarate = default(100Mbps);
         }
 
     submodules:
         AP: AccessPoint {
-            @display("p=260.49377,209.97375");
+            @display("p=621.4425,484.12");
         }
         DRouter: Router {
-            @display("p=360,274");
+            @display("p=621.4425,121.03");
         }
         DISPRouter: Router {
-            @display("p=528,274");
+            @display("p=849.53754,283.95502");
         }
         HTTPServer: StandardHost {
-            @display("p=659.91754,108.933754;i=device/server");
+            @display("p=982.205,121.03;i=device/server");
         }
         LISPRouter: Router {
-            @display("p=726.22504,273.12375");
+            @display("p=1333.6575,283.95502");
         }
         LRouter: Router {
-            @display("p=957,274");
+            @display("p=1603.6475,283.95502");
         }
         FTPServer: StandardHost {
-            @display("p=1056,110;i=device/server");
+            @display("p=1813.1226,465.5;i=device/server");
         }
         Professor: StandardHost {
-            @display("p=833.58,211.5525;i=misc/laptop2");
+            @display("p=1333.6575,465.5;i=misc/laptop2");
         }
         FTPUploadStudent: WirelessHost {
-            @display("p=156.29626,329.95877");
+            @display("p=165.2525,283.95502");
         }
         Student: WirelessHost {
-            @display("p=118.40626,211.5525");
+            @display("p=165.2525,486.4475");
         }
         Client[HTTP_Clients]: WirelessHost {
-            @display("p=156.29626,69.465004");
+            @display("p=165.2525,81.4625");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=848,70");
+            @display("p=1454.6875,74.48");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=364.69125,154.71751");
+            @display("p=1249.8676,74.48");
         }
 
     connections allowunconnected:

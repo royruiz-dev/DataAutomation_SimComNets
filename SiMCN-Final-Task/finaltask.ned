@@ -21,6 +21,7 @@ import inet.node.wireless.AccessPoint;
 import ned.DatarateChannel;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.mobility.static.StationaryMobility;
+import inet.node.ethernet.Eth100M;
 
 
 import inet.applications.udpapp.UdpBasicApp;
@@ -38,31 +39,31 @@ network FinalTask
 {
     parameters:
         int HTTP_Clients; // number of Clients web browsing
-        @display("bgb=1259,379");
+        @display("bgb=1858.1888,694.65");
 
     types:
-        channel FTPServer_LRouter extends DatarateChannel // bi-directional
+        channel FTPServer_LRouter extends Eth100M // bi-directional
         {
             datarate = default(100Mbps);
         }
-        channel Lecture_LRouter extends DatarateChannel // bi-directional
+        channel VideoLecture_LRouter extends Eth100M // bi-directional
         {
             datarate = default(100Mbps);
         }
         channel LRouter_LISPRouter extends DatarateChannel // uni-directional
         {
-            datarate = default(8Mbps); // ADSL Downstream Bandwidth
+            datarate = default(1Mbps); // ADSL Upstream Bandwidth
         }
         channel LISPRouter_LRouter extends DatarateChannel // uni-directional
         {
-            datarate = default(1Mbps); // ADSL Upstream Bandwidth
+            datarate = default(8Mbps); // ADSL Downstream Bandwidth
         }
-        channel LISPRouter_DISPRouter extends DatarateChannel // bi-directional
+        channel LISPRouter_DISPRouter extends Eth100M // bi-directional
         {
             datarate = default(100Mbps);
             delay = default(60ms);
         }
-        channel HTTPServer_DISPRouter extends DatarateChannel // bi-directional
+        channel HTTPServer_DISPRouter extends Eth100M // bi-directional
         {
             datarate = default(100Mbps);
             delay = default(60ms);
@@ -75,14 +76,14 @@ network FinalTask
         {
             datarate = default(40Mbps); // VDSL Upstream Bandwidth
         }
-        channel AP_DRouter extends DatarateChannel // bi-directional
+        channel AP_DRouter extends Eth100M // bi-directional
         {
             datarate = default(100Mbps);
         }
 
     submodules:
         AP: AccessPoint {
-            @display("p=268,227");
+            @display("p=260.49377,209.97375");
         }
         DRouter: Router {
             @display("p=360,274");
@@ -91,10 +92,10 @@ network FinalTask
             @display("p=528,274");
         }
         HTTPServer: StandardHost {
-            @display("p=623,110;i=device/server");
+            @display("p=659.91754,108.933754;i=device/server");
         }
         LISPRouter: Router {
-            @display("p=809,274");
+            @display("p=726.22504,273.12375");
         }
         LRouter: Router {
             @display("p=957,274");
@@ -103,27 +104,27 @@ network FinalTask
             @display("p=1056,110;i=device/server");
         }
         Professor: StandardHost {
-            @display("p=869,170;i=misc/laptop2");
+            @display("p=833.58,211.5525;i=misc/laptop2");
         }
         FTPUploadStudent: WirelessHost {
-            @display("p=210,306");
+            @display("p=156.29626,329.95877");
         }
-        VideoLectureStudent: WirelessHost {
-            @display("p=159,228");
+        Student: WirelessHost {
+            @display("p=118.40626,211.5525");
         }
         Client[HTTP_Clients]: WirelessHost {
-            @display("p=210,134");
+            @display("p=156.29626,69.465004");
         }
         configurator: Ipv4NetworkConfigurator {
             @display("p=848,70");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=324,169");
+            @display("p=364.69125,154.71751");
         }
 
     connections allowunconnected:
         FTPServer.ethg++ <--> FTPServer_LRouter <--> LRouter.ethg++;
-        Professor.ethg++ <--> Lecture_LRouter <--> LRouter.ethg++;
+        Professor.ethg++ <--> VideoLecture_LRouter <--> LRouter.ethg++;
 
         LRouter.pppg$o++ --> LRouter_LISPRouter --> LISPRouter.pppg$i++; // download
         LRouter.pppg$i++ <-- LISPRouter_LRouter <-- LISPRouter.pppg$o++; // upload

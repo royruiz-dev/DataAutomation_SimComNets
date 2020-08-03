@@ -38,7 +38,11 @@ simple VideoConfApp extends UdpBasicApp
 network FinalTask
 {
     parameters:
-        int HTTP_Clients; // number of Clients web browsing
+        int numClient = default(4); // number of HTTP clients for web browsing
+        double upLinkADSL @unit(Mbps) = default(1Mbps);
+        double downLinkADSL @unit(Mbps) = default(8Mbps);
+        double upLinkVDSL @unit(Mbps) = default(40Mbps);
+        double downLinkVDSL @unit(Mbps) = default(100Mbps);
         @display("bgb=2059.8374,686.6125");
 
     types:
@@ -50,11 +54,11 @@ network FinalTask
         }
         channel LRouter_LISPRouter extends DatarateChannel // uni-directional
         {
-            datarate = default(1Mbps); // ADSL Upstream Bandwidth
+            datarate = upLinkADSL; // ADSL Upstream Bandwidth
         }
         channel LISPRouter_LRouter extends DatarateChannel // uni-directional
         {
-            datarate = default(8Mbps); // ADSL Downstream Bandwidth
+            datarate = downLinkADSL; // ADSL Downstream Bandwidth
         }
         channel LISPRouter_DISPRouter extends Eth100M // bi-directional
         {
@@ -68,11 +72,11 @@ network FinalTask
         }
         channel DISPRouter_DRouter extends DatarateChannel // uni-directional
         {
-            datarate = default(100Mbps); // VDSL Downstream Bandwidth
+            datarate = downLinkVDSL; // VDSL Downstream Bandwidth
         }
         channel DRouter_DISPRouter extends DatarateChannel // uni-directional
         {
-            datarate = default(40Mbps); // VDSL Upstream Bandwidth
+            datarate = upLinkVDSL; // VDSL Upstream Bandwidth
         }
         channel AP_DRouter extends Eth100M // bi-directional
         {
@@ -109,7 +113,7 @@ network FinalTask
         Student: WirelessHost {
             @display("p=165.2525,486.4475");
         }
-        Client[HTTP_Clients]: WirelessHost {
+        Client[numClient]: WirelessHost {
             @display("p=165.2525,81.4625");
         }
         configurator: Ipv4NetworkConfigurator {

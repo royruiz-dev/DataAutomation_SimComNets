@@ -22,6 +22,7 @@ import ned.DatarateChannel;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.mobility.static.StationaryMobility;
 import inet.node.ethernet.Eth100M;
+import inet.visualizer.contract.IIntegratedVisualizer;
 
 
 import inet.applications.udpapp.UdpBasicApp;
@@ -121,6 +122,9 @@ network FinalTask
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             @display("p=1249.8676,74.48");
+        }
+        visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
+            @display("p=1761.2863,79.94125");
         }
 
     connections allowunconnected:

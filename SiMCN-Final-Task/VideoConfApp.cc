@@ -18,12 +18,12 @@ class VideoConfApp : public inet::UdpBasicApp {
 public:
     double acceptableDelay;
     double packetLossRate;
-    double delay;   // NEW
+    //double delay;   // NEW
 
     int totalLostPackets;
     int numLatePackets;
 
-    cOutVector delayVector; // NEW
+    cOutVector endToEndDelayVector; // NEW
 
 protected:
     virtual void initialize(int stage) override;
@@ -38,7 +38,7 @@ void VideoConfApp::initialize(int stage) {
     UdpBasicApp::initialize(stage);
     acceptableDelay = par("acceptableDelay");
     packetLossRate = 0.0;
-    delay = 0.0;    // NEW
+    //delay = 0.0;    // NEW
 
     totalLostPackets = 0;
     numLatePackets = 0;
@@ -50,11 +50,11 @@ void VideoConfApp::sendPacket() {
 
 void VideoConfApp::processPacket(Packet *pk) {
     simtime_t actualDelay = simTime() - pk->getCreationTime();
-    delay = actualDelay.dbl();  // NEW
+    //delay = actualDelay.dbl();  // NEW
 
     EV << "Time between packet generation and time in application of receiver: " << actualDelay << endl;
 
-    delayVector.record(delay);  // NEW
+    endToEndDelayVector.record(actualDelay);  // NEW
 
     if (actualDelay.dbl() > acceptableDelay) {
         numLatePackets++;
@@ -77,6 +77,8 @@ void VideoConfApp::finish() {
     recordScalar("[VC] Total LOST Packets", totalLostPackets);
     recordScalar("[VC] Total LATE Packets", numLatePackets);
     recordScalar("[VC] AVG PK LOSS Rate", packetLossRate);
+
+    endToEndDelayVector.setName("[VC] End-to-End Delay");
 
     UdpBasicApp::finish();
 }

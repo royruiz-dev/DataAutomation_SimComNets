@@ -5,6 +5,8 @@
  *      Author: royruiz
  */
 
+#include <stdio.h>  // NEW
+#include <string.h> // NEW
 #include <omnetpp.h>
 #include "inet/applications/udpapp/UdpBasicApp.h"
 
@@ -16,9 +18,12 @@ class VideoConfApp : public inet::UdpBasicApp {
 public:
     double acceptableDelay;
     double packetLossRate;
+    double delay;   // NEW
 
     int totalLostPackets;
     int numLatePackets;
+
+    cOutVector delayVector; // NEW
 
 protected:
     virtual void initialize(int stage) override;
@@ -33,6 +38,7 @@ void VideoConfApp::initialize(int stage) {
     UdpBasicApp::initialize(stage);
     acceptableDelay = par("acceptableDelay");
     packetLossRate = 0.0;
+    delay = 0.0;    // NEW
 
     totalLostPackets = 0;
     numLatePackets = 0;
@@ -44,8 +50,11 @@ void VideoConfApp::sendPacket() {
 
 void VideoConfApp::processPacket(Packet *pk) {
     simtime_t actualDelay = simTime() - pk->getCreationTime();
+    delay = actualDelay.dbl();  // NEW
 
     EV << "Time between packet generation and time in application of receiver: " << actualDelay << endl;
+
+    delayVector.record(delay);  // NEW
 
     if (actualDelay.dbl() > acceptableDelay) {
         numLatePackets++;
@@ -63,15 +72,11 @@ void VideoConfApp::finish() {
     totalLostPackets = this->numSent - this->numReceived;
     packetLossRate = static_cast<double>(totalLostPackets) / static_cast<double>(this->numSent);
 
-    recordScalar("[VoIP] Total SENT Packets", this->numSent);
-    recordScalar("[VoIP] Total RCVD Packets", this->numReceived);
-    recordScalar("[VoIP] Total LOST Packets", totalLostPackets);
-    recordScalar("[VoIP] Total LATE Packets", numLatePackets);
-    recordScalar("[VoIP] AVG PK LOSS Rate", packetLossRate);
+    recordScalar("[VC] Total SENT Packets", this->numSent);
+    recordScalar("[VC] Total RCVD Packets", this->numReceived);
+    recordScalar("[VC] Total LOST Packets", totalLostPackets);
+    recordScalar("[VC] Total LATE Packets", numLatePackets);
+    recordScalar("[VC] AVG PK LOSS Rate", packetLossRate);
 
     UdpBasicApp::finish();
 }
-
-
-
-

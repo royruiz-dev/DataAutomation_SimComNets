@@ -1,9 +1,3 @@
-/*
- * VideoConfApp.cc
- *
- *  Created on: Jul 28, 2020
- *      Author: royruiz
- */
 
 #include <stdio.h>  // NEW
 #include <string.h> // NEW
@@ -18,7 +12,8 @@ class VideoConfApp : public inet::UdpBasicApp {
 public:
     double acceptableDelay;
     double packetLossRate;
-    //double delay;   // NEW
+    double delaySum;   // NEW
+    double avg_E2E_Delay;
 
     int totalLostPackets;
     int numLatePackets;
@@ -38,10 +33,15 @@ void VideoConfApp::initialize(int stage) {
     UdpBasicApp::initialize(stage);
     acceptableDelay = par("acceptableDelay");
     packetLossRate = 0.0;
-    //delay = 0.0;    // NEW
+    delaySum = 0.0;    // NEW
+    avg_E2E_Delay = 0.0;
+
 
     totalLostPackets = 0;
     numLatePackets = 0;
+    if (stage == 1) {
+    endToEndDelayVector.setName("[VC] End-to-End Delay");
+    }
 }
 
 void VideoConfApp::sendPacket() {
@@ -50,7 +50,7 @@ void VideoConfApp::sendPacket() {
 
 void VideoConfApp::processPacket(Packet *pk) {
     simtime_t actualDelay = simTime() - pk->getCreationTime();
-    //delay = actualDelay.dbl();  // NEW
+    delaySum += actualDelay.dbl();  // NEW
 
     EV << "Time between packet generation and time in application of receiver: " << actualDelay << endl;
 
@@ -69,8 +69,9 @@ void VideoConfApp::processPacket(Packet *pk) {
 }
 
 void VideoConfApp::finish() {
-    totalLostPackets = this->numSent - this->numReceived;
+    totalLostPackets = this->numSent - this->numReceived - numLatePackets;
     packetLossRate = static_cast<double>(totalLostPackets) / static_cast<double>(this->numSent);
+    avg_E2E_Delay = delaySum / (this->numReceived + numLatePackets);
 
     recordScalar("[VC] Total SENT Packets", this->numSent);
     recordScalar("[VC] Total RCVD Packets", this->numReceived);
@@ -78,7 +79,7 @@ void VideoConfApp::finish() {
     recordScalar("[VC] Total LATE Packets", numLatePackets);
     recordScalar("[VC] AVG PK LOSS Rate", packetLossRate);
 
-    endToEndDelayVector.setName("[VC] End-to-End Delay");
+    recordScalar("[VC] Avg End-to-End Delay", avg_E2E_Delay);
 
     UdpBasicApp::finish();
 }

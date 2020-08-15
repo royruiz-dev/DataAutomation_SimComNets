@@ -1,0 +1,21 @@
+run,time,repetition,Module,Name,
+VC_with_FTP_and_HTTP-0-20200815-12:23:06-22561,1000,0,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00052
+VC_with_FTP_and_HTTP-0-20200815-12:23:06-22561,1000,0,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.00752
+VC_with_FTP_and_HTTP-1-20200815-13:05:21-22561,1000,1,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00052
+VC_with_FTP_and_HTTP-1-20200815-13:05:21-22561,1000,1,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.00784
+VC_with_FTP_and_HTTP-2-20200815-13:41:21-22561,1000,2,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00044
+VC_with_FTP_and_HTTP-2-20200815-13:41:21-22561,1000,2,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.0074
+VC_with_FTP_and_HTTP-3-20200815-12:23:06-22562,1000,3,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00044
+VC_with_FTP_and_HTTP-3-20200815-12:23:06-22562,1000,3,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.0078
+VC_with_FTP_and_HTTP-4-20200815-13:05:01-22562,1000,4,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.0004
+VC_with_FTP_and_HTTP-4-20200815-13:05:01-22562,1000,4,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.0074
+VC_with_FTP_and_HTTP-5-20200815-13:41:32-22562,1000,5,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00044
+VC_with_FTP_and_HTTP-5-20200815-13:41:32-22562,1000,5,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.00836
+VC_with_FTP_and_HTTP-6-20200815-12:23:06-22563,1000,6,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00048
+VC_with_FTP_and_HTTP-6-20200815-12:23:06-22563,1000,6,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.008
+VC_with_FTP_and_HTTP-7-20200815-13:06:50-22563,1000,7,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00044
+VC_with_FTP_and_HTTP-7-20200815-13:06:50-22563,1000,7,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.00732
+VC_with_FTP_and_HTTP-8-20200815-13:43:21-22563,1000,8,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.0004
+VC_with_FTP_and_HTTP-8-20200815-13:43:21-22563,1000,8,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.0076
+VC_with_FTP_and_HTTP-9-20200815-12:23:06-22564,1000,9,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.00036
+VC_with_FTP_and_HTTP-9-20200815-12:23:06-22564,1000,9,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.00728

@@ -70,7 +70,7 @@ void VideoConfApp::processPacket(Packet *pk) {
 
 void VideoConfApp::finish() {
     totalLostPackets = this->numSent - this->numReceived - numLatePackets;
-    packetLossRate = static_cast<double>(totalLostPackets) / static_cast<double>(this->numSent);
+    packetLossRate = (static_cast<double>(this->numSent) - static_cast<double>(this->numReceived)) / static_cast<double>(this->numSent);
     avg_E2E_Delay = delaySum / (this->numReceived + numLatePackets);
 
     recordScalar("[VC] Total SENT Packets", this->numSent);

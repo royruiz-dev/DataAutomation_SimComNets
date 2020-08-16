@@ -4,4 +4,5 @@
 
 opp_runall -j$(nproc) ./SiMCN-Final-Task -u Cmdenv -c HTTP_Client_Increase_S04a -r 0..9 -n .:/fibus/fs2/19/cbh2268/workspace/inet4/src omnetpp.ini
 opp_runall -j$(nproc) ./SiMCN-Final-Task -u Cmdenv -c HTTP_Client_Increase_S04b -r 0..9 -n .:/fibus/fs2/19/cbh2268/workspace/inet4/src omnetpp.ini
+opp_runall -j$(nproc) ./SiMCN-Final-Task -u Cmdenv -c HTTP_Client_Increase_S04c -r 0..9 -n .:/fibus/fs2/19/cbh2268/workspace/inet4/src omnetpp.ini
 opp_runall -j$(nproc) ./SiMCN-Final-Task -u Cmdenv -c HTTP_Client_Decrease_S05 -r 0..9 -n .:/fibus/fs2/19/cbh2268/workspace/inet4/src omnetpp.ini

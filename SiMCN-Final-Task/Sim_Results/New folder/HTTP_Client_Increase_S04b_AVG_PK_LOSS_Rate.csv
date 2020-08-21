@@ -1,0 +1,21 @@
+run,time,repetition,Module,Name,
+HTTP_Client_Increase_S04b-0-20200816-04:43:10-4586,1000,0,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.0292
+HTTP_Client_Increase_S04b-0-20200816-04:43:10-4586,1000,0,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.27876
+HTTP_Client_Increase_S04b-1-20200816-06:08:11-4586,1000,1,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.0364
+HTTP_Client_Increase_S04b-1-20200816-06:08:11-4586,1000,1,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.29468
+HTTP_Client_Increase_S04b-2-20200816-07:29:07-4586,1000,2,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.03404
+HTTP_Client_Increase_S04b-2-20200816-07:29:07-4586,1000,2,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.29504
+HTTP_Client_Increase_S04b-3-20200816-04:43:10-4587,1000,3,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.02896
+HTTP_Client_Increase_S04b-3-20200816-04:43:10-4587,1000,3,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.2724
+HTTP_Client_Increase_S04b-4-20200816-06:09:33-4587,1000,4,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.032
+HTTP_Client_Increase_S04b-4-20200816-06:09:33-4587,1000,4,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.31748
+HTTP_Client_Increase_S04b-5-20200816-07:32:58-4587,1000,5,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.03208
+HTTP_Client_Increase_S04b-5-20200816-07:32:58-4587,1000,5,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.27392
+HTTP_Client_Increase_S04b-6-20200816-04:43:10-4588,1000,6,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.02904
+HTTP_Client_Increase_S04b-6-20200816-04:43:10-4588,1000,6,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.28144
+HTTP_Client_Increase_S04b-7-20200816-06:09:27-4588,1000,7,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.0358
+HTTP_Client_Increase_S04b-7-20200816-06:09:27-4588,1000,7,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.28144
+HTTP_Client_Increase_S04b-8-20200816-07:32:13-4588,1000,8,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.03088
+HTTP_Client_Increase_S04b-8-20200816-07:32:13-4588,1000,8,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.27348
+HTTP_Client_Increase_S04b-9-20200816-04:43:10-4589,1000,9,FinalTask.Professor.app[0],[VC] AVG PK LOSS Rate,0.02776
+HTTP_Client_Increase_S04b-9-20200816-04:43:10-4589,1000,9,FinalTask.Student.app[0],[VC] AVG PK LOSS Rate,0.27092

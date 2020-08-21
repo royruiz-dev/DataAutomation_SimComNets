@@ -13,30 +13,17 @@ scavetool export  -f 'module(*) AND name(throughput:last)' -o results/HTTP_Clien
 scavetool export  -f 'module(*) AND name(throughput:last)' -o results/HTTP_Clients_12_throughput.csv -F CSV-S results/HTTP_Clients_12-*.sca
 
 
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_1_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_1-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_2_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_2-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_3_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_3-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_5_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_5-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_6_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_6-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_7_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_7-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_8_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_8-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_9_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_9-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HTTP_Clients_10_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_10-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HTTP_Clients_11_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_11-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(packetDropQueueOverflow:count)' -o results/HTTP_Clients_12_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_12-*.sca
-
-
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_1_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_1-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_2_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_2-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_3_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_3-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_5_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_5-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_6_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_6-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_7_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_7-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_8_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_8-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_9_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_9-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_10_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_10-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_11_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_11-*.sca
-scavetool export  -f 'module(*.LISPRouter.ppp.*) AND name(queueLength:timeavg)' -o results/HTTP_Clients_12_queueLength_timeavg.csv -F CSV-S results/HTTP_Clients_12-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_1_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_1-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_2_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_2-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_3_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_3-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_5_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_5-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_6_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_6-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_7_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_7-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_8_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_8-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HHTTP_Clients_9_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_9-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HTTP_Clients_10_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_10-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HTTP_Clients_11_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_11-*.sca
+scavetool export  -f 'module(*.LISPRouter.*) AND name(packetDropQueueOverflow:count)' -o results/HTTP_Clients_12_packetDropQueueOverflow_count.csv -F CSV-S results/HTTP_Clients_12-*.sca
 
 
 scavetool export  -f 'module(*) AND name(packetDrop:count)' -o results/HTTP_Clients_1_packetDrop_count.csv -F CSV-S results/HTTP_Clients_1-*.sca

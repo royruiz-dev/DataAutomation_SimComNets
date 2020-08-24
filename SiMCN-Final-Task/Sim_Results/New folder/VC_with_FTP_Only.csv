@@ -1,7 +1,0 @@
-run,time,repetition,Module,Name,
-VC_with_FTP_Only-0-20200811-12:16:19-4502,1000,0,FinalTask.Professor.app[0],[VoIP] Total RCVD Packets,21980
-VC_with_FTP_Only-0-20200811-12:16:19-4502,1000,0,FinalTask.Student.app[0],[VoIP] Total RCVD Packets,24970
-VC_with_FTP_Only-1-20200811-12:16:19-4503,1000,1,FinalTask.Professor.app[0],[VoIP] Total RCVD Packets,22037
-VC_with_FTP_Only-1-20200811-12:16:19-4503,1000,1,FinalTask.Student.app[0],[VoIP] Total RCVD Packets,24970
-VC_with_FTP_Only-2-20200811-12:16:19-4504,1000,2,FinalTask.Professor.app[0],[VoIP] Total RCVD Packets,22080
-VC_with_FTP_Only-2-20200811-12:16:19-4504,1000,2,FinalTask.Student.app[0],[VoIP] Total RCVD Packets,24972

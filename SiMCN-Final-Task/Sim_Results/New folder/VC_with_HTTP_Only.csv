@@ -1,7 +1,0 @@
-run,time,repetition,Module,Name,
-VC_with_HTTP_Only-0-20200811-12:35:39-4738,1000,0,FinalTask.Professor.app[0],[VoIP] Total RCVD Packets,24971
-VC_with_HTTP_Only-0-20200811-12:35:39-4738,1000,0,FinalTask.Student.app[0],[VoIP] Total RCVD Packets,24486
-VC_with_HTTP_Only-1-20200811-12:35:39-4739,1000,1,FinalTask.Professor.app[0],[VoIP] Total RCVD Packets,24969
-VC_with_HTTP_Only-1-20200811-12:35:39-4739,1000,1,FinalTask.Student.app[0],[VoIP] Total RCVD Packets,24496
-VC_with_HTTP_Only-2-20200811-12:35:39-4740,1000,2,FinalTask.Professor.app[0],[VoIP] Total RCVD Packets,24969
-VC_with_HTTP_Only-2-20200811-12:35:39-4740,1000,2,FinalTask.Student.app[0],[VoIP] Total RCVD Packets,24536

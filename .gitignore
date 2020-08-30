@@ -78,7 +78,7 @@ results*
 *.log
 *.sim
 *.pcap
-*.sca
+#*.sca
 *.vec
 *.vci
 .buildlog*

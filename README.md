@@ -4,12 +4,11 @@ This repository contains a collection of Jupyter notebooks, Python scripts, shel
 
 Each exercise (Ex02 through Final-Task) builds practical skills using Python’s data ecosystem and demonstrates key steps of the data pipeline from ingestion to visualization.
 
-### Languages & Tools
-
-- **Python**
-- **Jupyter Notebooks**
-- **Shell Scripts**
-- **C++**
+### Languages Used
+- Python (.py)
+- Shell Script (.sh)
+- C++ (.cpp)
+- Jupyter Notebooks (.ipynb)
 
 ### Python Libraries
 

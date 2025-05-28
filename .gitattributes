@@ -1,0 +1,4 @@
+# Force file types to be recognized by specific languages
+*.sh linguist-language=Shell
+*.cpp linguist-language=C++
+*.py linguist-language=Python
